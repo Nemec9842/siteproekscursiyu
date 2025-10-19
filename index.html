@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Борис Петрович Жуков - учёный и конструктор</title>
+    <style>
+        /* Общие стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #2c1810;
+            background-color: #f8f3e6;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.03"><rect width="100" height="100" fill="none" stroke="%238B4513" stroke-width="2"/></svg>');
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Историческая цветовая палитра */
+        :root {
+            --primary-dark: #8B4513;    /* Коричневый - исторический, солидный */
+            --primary-medium: #A0522D;  /* Светло-коричневый */
+            --primary-light: #DEB887;   /* Бежевый */
+            --accent-gold: #D4AF37;     /* Золотой для акцентов */
+            --accent-red: #8B0000;      /* Темно-красный */
+            --paper: #f8f3e6;          /* Цвет старой бумаги */
+            --text-dark: #2c1810;      /* Темно-коричневый для текста */
+            --border-color: #c4a484;   /* Цвет границ */
+        }
+
+        /* Шапка */
+        .header {
+            background: linear-gradient(135deg, var(--primary-dark), var(--accent-red));
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            border-bottom: 5px solid var(--accent-gold);
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><text x="50%" y="50%" font-family="Georgia" font-size="14" text-anchor="middle" dominant-baseline="middle">⚗️</text></svg>');
+            background-size: 100px 100px;
+        }
+
+        .site-title {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .site-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+        }
+
+        /* Навигация */
+        .navigation {
+            background-color: var(--primary-medium);
+            border-bottom: 2px solid var(--accent-gold);
+        }
+
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        .nav-menu li {
+            margin: 0 1.5rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            background-color: var(--accent-gold);
+            color: var(--text-dark);
+        }
+
+        /* Основные секции */
+        .main {
+            background-color: var(--paper);
+            position: relative;
+        }
+
+        .main::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(139, 69, 19, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(139, 0, 0, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: var(--primary-dark);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+        }
+
+        /* Вводная секция */
+        .intro-section {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.1), rgba(212, 175, 55, 0.1));
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .intro-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .intro-content h2 {
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        /* Биография */
+        .bio-section {
+            padding: 4rem 0;
+        }
+
+        .bio-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .bio-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            text-align: justify;
+        }
+
+        .bio-highlight {
+            background-color: rgba(212, 175, 55, 0.2);
+            padding: 1.5rem;
+            border-left: 4px solid var(--accent-gold);
+            margin: 2rem 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        /* Хронология */
+        .timeline-section {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, rgba(222, 184, 135, 0.2), rgba(139, 0, 0, 0.1));
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background-color: var(--primary-dark);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            justify-content: flex-end;
+            padding-right: 50%;
+        }
+
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
+            padding-left: 50%;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            position: relative;
+            border-top: 3px solid var(--accent-red);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 100%;
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 10px solid white;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: 100%;
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-right: 10px solid white;
+        }
+
+        .timeline-year {
+            font-weight: bold;
+            color: var(--accent-red);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Награды */
+        .awards-section {
+            padding: 4rem 0;
+        }
+
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .award-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+            border-top: 4px solid var(--accent-gold);
+        }
+
+        .award-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .award-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .award-title {
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Подвал */
+        .footer {
+            background: linear-gradient(135deg, var(--primary-dark), var(--text-dark));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 3px solid var(--accent-gold);
+        }
+
+        .footer-content p {
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .site-title {
+                font-size: 2rem;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .nav-menu li {
+                margin: 0;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                justify-content: flex-start;
+                padding-left: 70px;
+                padding-right: 0;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content::after,
+            .timeline-item:nth-child(even) .timeline-content::after {
+                left: -10px;
+                right: auto;
+                border-right: 10px solid white;
+                border-left: none;
+            }
+            
+            .awards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .site-title {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .timeline-content {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="site-title">Борис Петрович Жуков</h1>
+                <p class="site-subtitle">1912-2000 • Учёный и конструктор, создатель высокоэффективных топлив</p>
+            </div>
+        </div>
+    </header>
+
+    <nav class="navigation">
+        <div class="container">
+            <ul class="nav-menu">
+                <li><a href="#bio">Биография</a></li>
+                <li><a href="#timeline">Хронология</a></li>
+                <li><a href="#awards">Награды</a></li>
+                <li><a href="#legacy">Наследие</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main">
+        <section class="intro-section">
+            <div class="container">
+                <div class="intro-content">
+                    <h2>Академик АН СССР, дважды Герой Социалистического Труда</h2>
+                    <p class="intro-text">
+                        Выдающийся учёный и конструктор, создатель высокоэффективных топлив, 
+                        лауреат Ленинской и Государственной премий, директор Научно-исследовательского 
+                        химико-технологического института (НИХТИ) Министерства машиностроения СССР.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="bio" class="bio-section">
+            <div class="container">
+                <h2 class="section-title">Биография</h2>
+                <div class="bio-content">
+                    <p class="bio-text">
+                        Борис Петрович Жуков (1912-2000) – выдающийся учёный и конструктор, создатель высокоэффективных топлив, 
+                        академик Академии наук СССР, дважды Герой Социалистического Труда, лауреат Ленинской и Государственной премий, 
+                        директор Научно-исследовательского химико-технологического института (НИХТИ) Министерства машиностроения СССР.
+                    </p>
+                    
+                    <div class="bio-highlight">
+                        <p>
+                            Борис родился 12 ноября 1912 г. в городе Самарканд. В 1921 г. мальчик с родителями переехал в Москву, 
+                            где позже окончил школу с химическим уклоном. С 1930 г. Борис Жуков работал на Жилевском химическом заводе 
+                            в Московской области (сегодня ОАО «Жилевский завод пластмасс»). Затем был техником-лаборантом, старшим 
+                            техником Научно-испытательного института Военно-воздушных сил в Москве.
+                        </p>
+                    </div>
+                    
+                    <p class="bio-text">
+                        В 1937 г. с отличием окончил Московский химико-технологический институт им. Д. И. Менделеева 
+                        (ныне Российский химико-технологический университет им. Д. И. Менделеева). И тогда же устроился 
+                        научным сотрудником лаборатории в НИИ-6 (впоследствии Центральный НИИ химии и механики) Наркомата боеприпасов СССР. 
+                        В 1938 году был назначен заместителем начальника лаборатории. С началом Великой Отечественной войны НИИ-6 был 
+                        эвакуирован в город Кемерово, в начале 1942 г. Борис Петрович был назначен начальником лаборатории.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="timeline" class="timeline-section">
+            <div class="container">
+                <h2 class="section-title">Хронология достижений</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">1939</div>
+                            <p>Лабораторией была выполнена первая значимая работа по отработке зарядов для артиллерии, обеспечивающих гашение дульного пламени.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">1941</div>
+                            <p>Под руководством Б. П. Жукова были разработаны рецептуры пироксилиново-селитренных порохов, которые решили задачу исключительной важности – обеспечить зарядами ракетные установки «Катюша» на период развёртывания производства баллиститных порохов.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">1948</div>
+                            <p>Были выпущены первые отчёты по баллистическим испытаниям порохов.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">1951</div>
+                            <p>Борис Петрович начал работать над теорией горения порохов.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">1953-1955</div>
+                            <p>Был заместителем Министра оборонной промышленности СССР, но по собственной просьбе вернулся на пост генерального директора Научно-исследовательского химико-технологического института.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">1958</div>
+                            <p>Команда Б. П. Жукова получила заказ от Сергея Павловича Королёва на разработку крупногабаритных зарядов из баллиститного пороха для стратегического комплекса РТ-1.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">1966</div>
+                            <p>Закрытым указом Президиума Верховного Совета СССР от 28 июля 1966 г. Жукову Борису Петровичу присвоено звание Героя Социалистического Труда с вручением Ордена Ленина и Золотой Медали «Серп и молот».</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">1982</div>
+                            <p>Закрытым указом Президиума Верховного Совета СССР от 5 января 1982 г. Жуков Борис Петрович был награждён Орденом Ленина и второй Золотой медалью «Серп и молот».</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="awards" class="awards-section">
+            <div class="container">
+                <h2 class="section-title">Награды и звания</h2>
+                <div class="awards-grid">
+                    <div class="award-card">
+                        <div class="award-icon">🏅</div>
+                        <h3 class="award-title">Дважды Герой Социалистического Труда</h3>
+                        <p>1966, 1982</p>
+                    </div>
+                    
+                    <div class="award-card">
+                        <div class="award-icon">🎖️</div>
+                        <h3 class="award-title">Академик АН СССР</h3>
+                        <p>Член-корреспондент (1968), академик (1974)</p>
+                    </div>
+                    
+                    <div class="award-card">
+                        <div class="award-icon">⭐</div>
+                        <h3 class="award-title">Лауреат премий</h3>
+                        <p>Сталинская (1951), Государственная (1967), Ленинская (1976), имени С. П. Королёва (1982)</p>
+                    </div>
+                    
+                    <div class="award-card">
+                        <div class="award-icon">📜</div>
+                        <h3 class="award-title">Ордена и медали</h3>
+                        <p>4 Ордена Ленина, Орден Октябрьской Революции, Орден Трудового Красного Знамени, Орден «Знак Почёта», российский Орден Дружбы народов</p>
+                    </div>
+                    
+                    <div class="award-card">
+                        <div class="award-icon">👨‍🔬</div>
+                        <h3 class="award-title">Заслуженный деятель науки</h3>
+                        <p>Заслуженный деятель науки и техники РСФСР (1972)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="legacy" class="intro-section">
+            <div class="container">
+                <div class="intro-content">
+                    <h2>Наследие Б.П. Жукова</h2>
+                    <p class="intro-text">
+                        Борис Петрович Жуков оставил богатое научное наследие в области химии и технологии топлив. 
+                        Его работы по созданию высокоэффективных порохов и топлив для ракетной техники сыграли ключевую роль 
+                        в развитии оборонной промышленности СССР и космической программы страны. Его вклад в науку отмечен 
+                        многочисленными наградами и признанием коллег.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 МАУК «Культурно-эстетический центр». Все права защищены.</p>
+                <p>Памяти Бориса Петровича Жукова (1912-2000)</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
